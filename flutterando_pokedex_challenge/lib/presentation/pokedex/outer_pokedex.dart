@@ -109,7 +109,7 @@ class OuterPokedex extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Expanded(
-                      flex: 10,
+                      flex: 11,
                       child: innerPokedex,
                     ),
                     Expanded(
