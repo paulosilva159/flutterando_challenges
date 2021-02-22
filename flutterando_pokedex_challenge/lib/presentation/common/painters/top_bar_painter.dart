@@ -10,7 +10,7 @@ class TopBarPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final shadowHeight = size.height / 12;
+    final gapHeight = size.height / 12;
 
     final barPaint = Paint()..color = barColor;
 
@@ -18,7 +18,7 @@ class TopBarPainter extends CustomPainter {
 
     final strokePaint = Paint()
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 1
+      ..strokeWidth = .75
       ..color = Colors.black;
 
     final barPath = Path()
@@ -30,10 +30,10 @@ class TopBarPainter extends CustomPainter {
       ..close();
 
     final shadowPath = Path()
-      ..moveTo(size.width * 0, size.height * 1 - shadowHeight)
-      ..lineTo(size.width * 2 / 5, size.height * 1 - shadowHeight)
-      ..lineTo(size.width * 3 / 5, size.height * .5 - shadowHeight)
-      ..lineTo(size.width * 1, size.height * .5 - shadowHeight)
+      ..moveTo(size.width * 0, size.height * 1 - gapHeight)
+      ..lineTo(size.width * 2 / 5, size.height * 1 - gapHeight)
+      ..lineTo(size.width * 3 / 5, size.height * .5 - gapHeight)
+      ..lineTo(size.width * 1, size.height * .5 - gapHeight)
       ..lineTo(size.width * 1, size.height * .5)
       ..lineTo(size.width * 3 / 5, size.height * .5)
       ..lineTo(size.width * 2 / 5, size.height * 1)

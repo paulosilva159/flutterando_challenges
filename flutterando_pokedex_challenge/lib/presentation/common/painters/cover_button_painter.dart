@@ -31,17 +31,15 @@ class CoverButtonPainter extends CustomPainter {
       ..color = Colors.black;
 
     final path = Path()
-      ..lineTo(size.width * 0, -size.height / 2)
-      ..lineTo(size.width * 1, size.height * 0)
-      ..lineTo(size.width * 0, size.height / 2)
+      ..lineTo(size.width * 1, size.height / 2)
+      ..lineTo(size.width * 0, size.height * 1)
       ..close();
 
     final depthPath = Path()
-      ..moveTo(size.width * 0, -size.height / 2)
-      ..lineTo(size.width * 1, size.height * 0)
+      ..lineTo(size.width * 1, size.height / 2)
       ..lineTo(size.width * 1 - depth * sin(pi / 4),
-          size.height * 0 + depth * cos(pi / 4))
-      ..lineTo(size.width * 0, -size.height / 2 + depth)
+          size.height / 2 + depth * cos(pi / 4))
+      ..lineTo(size.width * 0, size.height * 0 + depth)
       ..close();
 
     canvas

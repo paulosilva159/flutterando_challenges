@@ -2,8 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-class CoverPainter extends CustomPainter {
-  CoverPainter({
+class OuterCoverPainter extends CustomPainter {
+  OuterCoverPainter({
     @required this.color,
     @required this.gapColor,
   })  : assert(color != null),
@@ -20,7 +20,7 @@ class CoverPainter extends CustomPainter {
     const coverGapWidth = 128.0;
     const coverGapHeight = 24.0;
 
-    final rollerWidth = size.width / 11;
+    final rollerWidth = size.width / 13;
 
     final topBarHeight = size.height * 3 / 11;
 

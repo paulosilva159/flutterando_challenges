@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutterando_pokedex_challenge/presentation/common/outer_pokedex/cover.dart';
+import 'package:flutterando_pokedex_challenge/presentation/common/outer_pokedex/animated_cover.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/painters/glass_crystal_painter.dart';
-import 'package:flutterando_pokedex_challenge/presentation/common/painters/roller_painter.dart';
+import 'package:flutterando_pokedex_challenge/presentation/common/painters/left_roller_painter.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/painters/top_bar_painter.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/utils/colors.dart';
+import 'package:flutterando_pokedex_challenge/presentation/pokedex/inner_pokedex.dart';
 
 class OuterPokedex extends StatelessWidget {
   const OuterPokedex({
-    @required this.innerPokedex,
-  }) : assert(innerPokedex != null);
+    @required this.coverController,
+    @required this.onCoverButtonPress,
+  })  : assert(coverController != null),
+        assert(onCoverButtonPress != null);
 
-  final Widget innerPokedex;
+  final AnimationController coverController;
+  final VoidCallback onCoverButtonPress;
 
   @override
   Widget build(BuildContext context) {
@@ -109,13 +113,12 @@ class OuterPokedex extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Expanded(
-                      flex: 11,
-                      child: innerPokedex,
+                      flex: 13,
+                      child: InnerPokedex(),
                     ),
                     Expanded(
-                      flex: 1,
                       child: CustomPaint(
-                        painter: RollerPainter(
+                        painter: LeftRollerPainter(
                           color: PokedexColors.outerPokedexColor,
                           gapColor: PokedexColors.outerShadowPokedexColor,
                         ),
@@ -123,7 +126,10 @@ class OuterPokedex extends StatelessWidget {
                     ),
                   ],
                 ),
-                Cover(),
+                AnimatedCover(
+                  controller: coverController,
+                  onButtonPress: onCoverButtonPress,
+                ),
               ],
             ),
           ),

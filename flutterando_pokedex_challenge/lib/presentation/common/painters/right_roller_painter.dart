@@ -2,8 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-class RollerPainter extends CustomPainter {
-  RollerPainter({@required this.color, @required this.gapColor})
+class RightRollerPainter extends CustomPainter {
+  RightRollerPainter({@required this.color, @required this.gapColor})
       : assert(color != null),
         assert(gapColor != null);
 
@@ -24,7 +24,7 @@ class RollerPainter extends CustomPainter {
     }) =>
         Rect.fromCenter(
           center: Offset(
-            size.width * 1 + gapWidthOffset,
+            size.width * 0 + gapWidthOffset,
             size.height * 0 - topBarHeight * .5 + gapHeightOffset,
           ),
           height: topBarShadowHeight * 2,
@@ -41,48 +41,41 @@ class RollerPainter extends CustomPainter {
       ..color = gapColor;
 
     final topRollerPath = Path()
-      ..lineTo(size.width * 0, size.height * 0 - topBarHeight * .5)
-      ..addArc(arcRect(), pi, pi / 2)
+      ..lineTo(size.width * 0,
+          size.height * 0 - topBarHeight * .5 - topBarShadowHeight)
+      ..addArc(arcRect(), -pi / 2, pi / 2)
       ..lineTo(size.width * 1, size.height * 0)
       ..lineTo(size.width * 0, size.height * 0)
-      ..addArc(arcRect(gapHeightOffset: topBarHeight * .5), pi, pi / 2)
-      ..lineTo(size.width * 1, 0)
+      ..addArc(arcRect(gapHeightOffset: topBarHeight * .5), -pi / 2, pi / 2)
+      ..lineTo(size.width * 0, 0)
       ..close();
 
     final topRollerGapPath = Path()
-      ..addArc(arcRect(gapHeightOffset: topBarHeight * .5), pi, pi / 2)
-      ..lineTo(size.width * 1, 0)
+      ..addArc(arcRect(gapHeightOffset: topBarHeight * .5), -pi / 2, pi / 2)
+      ..lineTo(size.width * 0, 0)
       ..close();
 
     final middleRollerPath = Path()
-      ..addArc(
-          arcRect(gapHeightOffset: topBarHeight * .5 + gapHeight), pi, pi / 2)
+      ..addArc(arcRect(gapHeightOffset: topBarHeight * .5 + gapHeight), -pi / 2,
+          pi / 2)
       ..lineTo(size.width * 1, size.height * 1 - topBarHeight * .5)
       ..lineTo(size.width * 0, size.height * 1 - topBarHeight * .5)
-      ..addArc(
-        arcRect(gapHeightOffset: size.height * 1),
-        pi,
-        pi / 2,
-      )
+      ..addArc(arcRect(gapHeightOffset: size.height * 1), -pi / 2, pi / 2)
       ..moveTo(size.width * 0, size.height * 1 - topBarHeight * .5)
       ..lineTo(size.width * 0, size.height * 0 + gapHeight)
       ..close();
 
     final middleRollerGapPath = Path()
       ..moveTo(size.width * 0, size.height * 1 - topBarHeight * .5)
-      ..addArc(
-        arcRect(gapHeightOffset: size.height * 1),
-        pi,
-        pi / 2,
-      )
+      ..addArc(arcRect(gapHeightOffset: size.height * 1), -pi / 2, pi / 2)
       ..lineTo(size.width * 1, size.height * 1 - topBarHeight * .5)
       ..lineTo(size.width * 0, size.height * 1 - topBarHeight * .5)
       ..close();
 
     final bottomRollerPath = Path()
       ..moveTo(size.width * 0, size.height * 1 + gapHeight)
-      ..addArc(
-          arcRect(gapHeightOffset: size.height * 1 + gapHeight), pi, pi / 2)
+      ..addArc(arcRect(gapHeightOffset: size.height * 1 + gapHeight), -pi / 2,
+          pi / 2)
       ..lineTo(size.width * 1, size.height * 1)
       ..lineTo(size.width * 0, size.height * 1)
       ..close();
@@ -90,7 +83,7 @@ class RollerPainter extends CustomPainter {
     Shader gradientColor(Path path) => LinearGradient(
           colors: [color, const Color(0xFFF06279), color],
           tileMode: TileMode.mirror,
-          stops: const [0, .5, 1],
+          stops: const [0, .7, 1],
         ).createShader(
           path.getBounds(),
         );
@@ -100,12 +93,12 @@ class RollerPainter extends CustomPainter {
     canvas
       ..drawPath(topRollerPath, rollerPaint(topRollerPath))
       ..drawPath(topRollerGapPath, gapPaint)
-      ..drawPath(topRollerPath, strokePaint)
+      // ..drawPath(topRollerPath, strokePaint)
       ..drawPath(middleRollerPath, rollerPaint(middleRollerPath))
       ..drawPath(middleRollerGapPath, gapPaint)
-      ..drawPath(middleRollerPath, strokePaint)
-      ..drawPath(bottomRollerPath, rollerPaint(bottomRollerPath))
-      ..drawPath(bottomRollerPath, strokePaint);
+      // ..drawPath(middleRollerPath, strokePaint)
+      ..drawPath(bottomRollerPath, rollerPaint(bottomRollerPath));
+    // ..drawPath(bottomRollerPath, strokePaint);
   }
 
   @override

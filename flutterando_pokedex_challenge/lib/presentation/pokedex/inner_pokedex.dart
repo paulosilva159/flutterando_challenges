@@ -6,12 +6,11 @@ import 'package:flutterando_pokedex_challenge/presentation/common/painters/pikac
 class InnerPokedex extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
             flex: 3,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 64),
+              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 32),
               child: Screen(
                 child: Pikachu(),
               ),
@@ -27,7 +26,11 @@ class InnerPokedex extends StatelessWidget {
 
 class Pikachu extends StatelessWidget {
   @override
-  Widget build(BuildContext context) => CustomPaint(
-        painter: PikachuPainter(),
-      );
+  Widget build(BuildContext context) {
+    final _size = MediaQuery.of(context).size;
+
+    return CustomPaint(
+      painter: PikachuPainter(),
+    );
+  }
 }

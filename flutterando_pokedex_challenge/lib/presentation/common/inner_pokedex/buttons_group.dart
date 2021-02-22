@@ -7,7 +7,7 @@ import 'package:flutterando_pokedex_challenge/presentation/common/utils/colors.d
 class ButtonsGroup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final radius = MediaQuery.of(context).size.height / 10;
+    final radius = MediaQuery.of(context).size.width / 5;
     final _size = MediaQuery.of(context).size;
 
     return Container(
