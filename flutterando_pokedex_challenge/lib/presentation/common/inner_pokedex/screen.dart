@@ -3,6 +3,7 @@ import 'package:flutterando_pokedex_challenge/presentation/common/inner_pokedex/
 import 'package:flutterando_pokedex_challenge/presentation/common/inner_pokedex/screen_sound_button.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/painters/screen_border_painter.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/utils/colors.dart';
+import 'package:flutterando_pokedex_challenge/presentation/common/utils/proportions.dart';
 
 class Screen extends StatelessWidget {
   const Screen({@required this.child}) : assert(child != null);
@@ -20,7 +21,7 @@ class Screen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
-            flex: 3,
+            flex: Proportions.innerPokedexScreenHeightProportion,
             child: Padding(
               padding: const EdgeInsets.only(left: 24, right: 24, top: 24),
               child: Container(
@@ -35,6 +36,7 @@ class Screen extends StatelessWidget {
             ),
           ),
           Expanded(
+            flex: Proportions.innerPokedexScreenBorderHeightProportion,
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: radius * 4.5),
               child: Row(

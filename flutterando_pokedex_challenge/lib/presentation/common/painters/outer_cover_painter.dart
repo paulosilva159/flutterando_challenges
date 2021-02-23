@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutterando_pokedex_challenge/presentation/common/utils/proportions.dart';
 
 class OuterCoverPainter extends CustomPainter {
   OuterCoverPainter({
@@ -14,17 +15,25 @@ class OuterCoverPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final _size = size * 11 / 10;
-
     const gapHeight = 4.0;
-    const coverGapWidth = 128.0;
+    const coverGapWidth = 120.0;
     const coverGapHeight = 24.0;
 
-    final rollerWidth = size.width / 13;
+    final _size = size *
+        ((Proportions.outerPokedexRollerWidthProportion +
+                Proportions.innerPokedexInsideContentWidthProportion) /
+            Proportions.innerPokedexInsideContentWidthProportion);
 
-    final topBarHeight = size.height * 3 / 11;
+    final rollerWidth = size.width /
+        (Proportions.outerPokedexRollerWidthProportion +
+            Proportions.innerPokedexInsideContentWidthProportion);
 
-    final topBarShadowHeight = topBarHeight / 12;
+    final topBarHeight = size.height *
+        Proportions.outerPokedexTopBarHeightProportion /
+        Proportions.innerPokedexInsideContentHeightProportion;
+
+    final topBarShadowHeight =
+        topBarHeight * Proportions.outerPokedexTopBarDepthHeightProportion;
 
     final coverStrokePaint = Paint()
       ..strokeWidth = 1

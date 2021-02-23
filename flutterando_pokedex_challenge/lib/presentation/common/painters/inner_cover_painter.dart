@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterando_pokedex_challenge/presentation/common/utils/proportions.dart';
 
 class InnerCoverPainter extends CustomPainter {
   InnerCoverPainter({
@@ -12,9 +13,11 @@ class InnerCoverPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+    const insideGapHeight = 16.0;
+
     drawCover(canvas, size, color);
-    drawInnerCover(canvas, size, color);
-    drawInnerCoverDepth(canvas, size, gapColor);
+    drawInnerCover(canvas, size, color, insideGapHeight);
+    drawInnerCoverDepth(canvas, size, gapColor, insideGapHeight);
   }
 
   @override
@@ -22,13 +25,18 @@ class InnerCoverPainter extends CustomPainter {
 }
 
 void drawCover(Canvas canvas, Size size, Color color) {
-  final _size = size * 11 / 10;
+  final _size = size *
+      ((Proportions.outerPokedexRollerWidthProportion +
+              Proportions.innerPokedexInsideContentWidthProportion) /
+          Proportions.innerPokedexInsideContentWidthProportion);
 
-  const gapHeight = 4.0;
+  final rollerWidth = _size.width /
+      (Proportions.innerPokedexInsideContentWidthProportion +
+          Proportions.outerPokedexRollerWidthProportion);
 
-  final rollerWidth = size.width / 13;
-
-  final topBarHeight = size.height * 3 / 11;
+  final topBarHeight = _size.height *
+      Proportions.outerPokedexTopBarHeightProportion /
+      Proportions.innerPokedexInsideContentHeightProportion;
 
   final coverStrokePaint = Paint()
     ..strokeWidth = 1
@@ -38,13 +46,13 @@ void drawCover(Canvas canvas, Size size, Color color) {
   final coverPaint = Paint()..color = color;
 
   final coverPath = Path()
-    ..moveTo(_size.width * 0 - rollerWidth * .25,
-        size.height * 0 - topBarHeight * .5 - gapHeight * 1.75)
+    ..moveTo(_size.width * 0 - rollerWidth * .15,
+        size.height * 0 - topBarHeight * .5)
     ..relativeLineTo(_size.width * 2 / 5, 0)
     ..relativeLineTo(_size.width * 1 / 5, topBarHeight * .5)
-    ..relativeLineTo(_size.width * 2 / 5 - rollerWidth * 1, 0)
-    ..lineTo(_size.width * 1 - rollerWidth * 1.25, size.height * 1)
-    ..lineTo(_size.width * 0 - rollerWidth * .25, size.height * 1)
+    ..relativeLineTo(_size.width * 2 / 5, 0)
+    ..relativeLineTo(0, size.height * 1)
+    ..relativeLineTo(-_size.width * 1, 0)
     ..close();
 
   canvas
@@ -52,15 +60,20 @@ void drawCover(Canvas canvas, Size size, Color color) {
     ..drawPath(coverPath, coverStrokePaint);
 }
 
-void drawInnerCover(Canvas canvas, Size size, Color color) {
-  final _size = size * 11 / 10;
+void drawInnerCover(
+    Canvas canvas, Size size, Color color, double insideGapHeight) {
+  final _size = size *
+      ((Proportions.outerPokedexRollerWidthProportion +
+              Proportions.innerPokedexInsideContentWidthProportion) /
+          Proportions.innerPokedexInsideContentWidthProportion);
 
-  const gapHeight = 4.0;
-  const insideGapHeight = 16.0;
+  final rollerWidth = _size.width /
+      (Proportions.innerPokedexInsideContentWidthProportion +
+          Proportions.outerPokedexRollerWidthProportion);
 
-  final rollerWidth = size.width / 13;
-
-  final topBarHeight = size.height * 3 / 11;
+  final topBarHeight = _size.height *
+      Proportions.outerPokedexTopBarHeightProportion /
+      Proportions.innerPokedexInsideContentHeightProportion;
 
   final coverStrokePaint = Paint()
     ..strokeWidth = 1
@@ -71,16 +84,29 @@ void drawInnerCover(Canvas canvas, Size size, Color color) {
 
   final innerPath = Path()
     ..moveTo(
-      _size.width * 0 - rollerWidth * .25 + insideGapHeight,
-      size.height * 0 - topBarHeight * .5 - gapHeight * 1.75 + insideGapHeight,
+      _size.width * 0 - rollerWidth * .15 + insideGapHeight,
+      size.height * 0 - topBarHeight * .5 + insideGapHeight,
     )
-    ..relativeLineTo(_size.width * 2 / 5 - insideGapHeight, 0)
-    ..relativeLineTo(_size.width * 1 / 5, topBarHeight * .5)
-    ..relativeLineTo(_size.width * 2 / 5 - rollerWidth * 1 - insideGapHeight, 0)
-    ..lineTo(_size.width * 1 - rollerWidth * 1.25 - insideGapHeight,
-        size.height * 1 - insideGapHeight)
-    ..lineTo(_size.width * 0 - rollerWidth * .25 + insideGapHeight,
-        size.height * 1 - insideGapHeight)
+    ..relativeLineTo(
+      _size.width * 2 / 5 - insideGapHeight,
+      0,
+    )
+    ..relativeLineTo(
+      _size.width * 1 / 5,
+      topBarHeight * .5,
+    )
+    ..relativeLineTo(
+      _size.width * 2 / 5 - insideGapHeight * 2 - rollerWidth * .25,
+      0,
+    )
+    ..relativeLineTo(
+      0,
+      size.height * 1 - insideGapHeight * 2,
+    )
+    ..relativeLineTo(
+      -_size.width * 1 + rollerWidth * .25 + insideGapHeight * 3,
+      0,
+    )
     ..close();
 
   canvas
@@ -88,16 +114,23 @@ void drawInnerCover(Canvas canvas, Size size, Color color) {
     ..drawPath(innerPath, coverStrokePaint);
 }
 
-void drawInnerCoverDepth(Canvas canvas, Size size, Color color) {
-  final _size = size * 11 / 10;
+void drawInnerCoverDepth(
+    Canvas canvas, Size size, Color color, double insideGapHeight) {
+  final _size = size *
+      ((Proportions.outerPokedexRollerWidthProportion +
+              Proportions.innerPokedexInsideContentWidthProportion) /
+          Proportions.innerPokedexInsideContentWidthProportion);
 
-  const gapHeight = 4.0;
-  const insideGapHeight = 16.0;
-  final depthHeight = size.height / 44;
+  final rollerWidth = _size.width /
+      (Proportions.innerPokedexInsideContentWidthProportion +
+          Proportions.outerPokedexRollerWidthProportion);
 
-  final rollerWidth = size.width / 13;
+  final topBarHeight = _size.height *
+      Proportions.outerPokedexTopBarHeightProportion /
+      Proportions.innerPokedexInsideContentHeightProportion;
 
-  final topBarHeight = size.height * 3 / 11;
+  final depthHeight =
+      topBarHeight * Proportions.outerPokedexTopBarDepthHeightProportion;
 
   final coverStrokePaint = Paint()
     ..strokeWidth = 1
@@ -106,32 +139,42 @@ void drawInnerCoverDepth(Canvas canvas, Size size, Color color) {
 
   final coverPaint = Paint()..color = color;
 
-  final innerPath = Path()
+  final depthPath = Path()
     ..moveTo(
-      _size.width * 0 - rollerWidth * .25 + insideGapHeight,
-      size.height * 0 - topBarHeight * .5 - gapHeight * 1.75 + insideGapHeight,
+      _size.width * 0 - rollerWidth * .15 + insideGapHeight,
+      _size.height * 0 - topBarHeight * .5 + insideGapHeight,
     )
-    ..relativeLineTo(_size.width * 2 / 5 - insideGapHeight, 0)
-    ..relativeLineTo(_size.width * 1 / 5, topBarHeight * .5)
-    ..relativeLineTo(_size.width * 2 / 5 - rollerWidth * 1 - insideGapHeight, 0)
-    ..lineTo(_size.width * 1 - rollerWidth * 1.25 - insideGapHeight,
-        size.height * 0 + insideGapHeight - gapHeight * 1.75 + depthHeight)
-    ..lineTo(_size.width * 1 - rollerWidth * 1.25 - insideGapHeight,
-        size.height * 0 + insideGapHeight - gapHeight * 1.75 + depthHeight)
     ..relativeLineTo(
-        -(_size.width * 2 / 5 - rollerWidth * 1 - insideGapHeight), 0)
-    ..relativeLineTo(-_size.width * 1 / 5, -topBarHeight * .5)
-    ..lineTo(
-      _size.width * 0 - rollerWidth * .25 + insideGapHeight,
-      size.height * 0 -
-          topBarHeight * .5 -
-          gapHeight * 1.75 +
-          insideGapHeight +
-          depthHeight,
+      _size.width * 2 / 5 - insideGapHeight,
+      0,
+    )
+    ..relativeLineTo(
+      _size.width * 1 / 5,
+      topBarHeight * .5,
+    )
+    ..relativeLineTo(
+      _size.width * 2 / 5 - insideGapHeight * 2 - rollerWidth * .25,
+      0,
+    )
+    ..relativeLineTo(
+      0,
+      depthHeight,
+    )
+    ..relativeLineTo(
+      -_size.width * 2 / 5 + insideGapHeight * 2,
+      0,
+    )
+    ..relativeLineTo(
+      -_size.width * 1 / 5,
+      -topBarHeight * .5,
+    )
+    ..relativeLineTo(
+      -_size.width * 2 / 5 + rollerWidth * .25 + insideGapHeight,
+      0,
     )
     ..close();
 
   canvas
-    ..drawPath(innerPath, coverPaint)
-    ..drawPath(innerPath, coverStrokePaint);
+    ..drawPath(depthPath, coverPaint)
+    ..drawPath(depthPath, coverStrokePaint);
 }

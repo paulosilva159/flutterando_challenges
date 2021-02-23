@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterando_pokedex_challenge/presentation/common/utils/proportions.dart';
 
 class TopBarPainter extends CustomPainter {
   TopBarPainter({@required this.barColor, @required this.shadowColor})
@@ -10,11 +11,12 @@ class TopBarPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final gapHeight = size.height / 12;
+    final gapHeight =
+        size.height * Proportions.outerPokedexTopBarDepthHeightProportion;
 
     final barPaint = Paint()..color = barColor;
 
-    final shadowPaint = Paint()..color = shadowColor;
+    final depthPaint = Paint()..color = shadowColor;
 
     final strokePaint = Paint()
       ..style = PaintingStyle.stroke
@@ -29,7 +31,7 @@ class TopBarPainter extends CustomPainter {
       ..lineTo(size.width * 0, size.height * 1)
       ..close();
 
-    final shadowPath = Path()
+    final depthPath = Path()
       ..moveTo(size.width * 0, size.height * 1 - gapHeight)
       ..lineTo(size.width * 2 / 5, size.height * 1 - gapHeight)
       ..lineTo(size.width * 3 / 5, size.height * .5 - gapHeight)
@@ -43,8 +45,8 @@ class TopBarPainter extends CustomPainter {
     canvas
       ..drawPath(barPath, barPaint)
       ..drawPath(barPath, strokePaint)
-      ..drawPath(shadowPath, shadowPaint)
-      ..drawPath(shadowPath, strokePaint);
+      ..drawPath(depthPath, depthPaint)
+      ..drawPath(depthPath, strokePaint);
   }
 
   @override

@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutterando_pokedex_challenge/presentation/common/utils/proportions.dart';
 
 class LeftRollerPainter extends CustomPainter {
   LeftRollerPainter({@required this.color, @required this.gapColor})
@@ -14,9 +15,12 @@ class LeftRollerPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     const gapHeight = 4.0;
 
-    final topBarHeight = size.height * 3 / 11;
+    final topBarHeight = size.height *
+        Proportions.outerPokedexTopBarHeightProportion /
+        Proportions.innerPokedexInsideContentHeightProportion;
 
-    final topBarShadowHeight = topBarHeight / 12;
+    final topBarDepthHeight =
+        topBarHeight * Proportions.outerPokedexTopBarDepthHeightProportion;
 
     Rect arcRect({
       double gapHeightOffset = 0,
@@ -27,14 +31,9 @@ class LeftRollerPainter extends CustomPainter {
             size.width * 1 + gapWidthOffset,
             size.height * 0 - topBarHeight * .5 + gapHeightOffset,
           ),
-          height: topBarShadowHeight * 2,
+          height: topBarDepthHeight * 2,
           width: size.width * 2,
         );
-
-    final strokePaint = Paint()
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 1
-      ..color = Colors.black;
 
     final gapPaint = Paint()
       ..style = PaintingStyle.fill
@@ -42,7 +41,7 @@ class LeftRollerPainter extends CustomPainter {
 
     final topRollerPath = Path()
       ..lineTo(size.width * 0,
-          size.height * 0 - topBarHeight * .5 - topBarShadowHeight)
+          size.height * 0 - topBarHeight * .5 - topBarDepthHeight)
       ..addArc(arcRect(), pi, pi / 2)
       ..lineTo(size.width * 1, size.height * 0)
       ..lineTo(size.width * 0, size.height * 0)
@@ -101,12 +100,9 @@ class LeftRollerPainter extends CustomPainter {
     canvas
       ..drawPath(topRollerPath, rollerPaint(topRollerPath))
       ..drawPath(topRollerGapPath, gapPaint)
-      // ..drawPath(topRollerPath, strokePaint)
       ..drawPath(middleRollerPath, rollerPaint(middleRollerPath))
       ..drawPath(middleRollerGapPath, gapPaint)
-      // ..drawPath(middleRollerPath, strokePaint)
       ..drawPath(bottomRollerPath, rollerPaint(bottomRollerPath));
-    // ..drawPath(bottomRollerPath, strokePaint);
   }
 
   @override

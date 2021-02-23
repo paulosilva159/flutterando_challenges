@@ -4,6 +4,7 @@ import 'package:flutterando_pokedex_challenge/presentation/common/painters/glass
 import 'package:flutterando_pokedex_challenge/presentation/common/painters/left_roller_painter.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/painters/top_bar_painter.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/utils/colors.dart';
+import 'package:flutterando_pokedex_challenge/presentation/common/utils/proportions.dart';
 import 'package:flutterando_pokedex_challenge/presentation/pokedex/inner_pokedex.dart';
 
 class OuterPokedex extends StatelessWidget {
@@ -26,14 +27,14 @@ class OuterPokedex extends StatelessWidget {
     return Column(
       children: [
         Expanded(
-          flex: 3,
+          flex: Proportions.outerPokedexTopBarHeightProportion,
           child: CustomPaint(
             painter: TopBarPainter(
               barColor: PokedexColors.outerPokedexColor,
               shadowColor: PokedexColors.outerShadowPokedexColor,
             ),
             child: Container(
-              padding: const EdgeInsets.all(32),
+              padding: EdgeInsets.all(_size.height / 24),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -105,7 +106,7 @@ class OuterPokedex extends StatelessWidget {
           ),
         ),
         Expanded(
-          flex: 11,
+          flex: Proportions.innerPokedexInsideContentHeightProportion,
           child: Container(
             child: Stack(
               children: [
@@ -113,10 +114,12 @@ class OuterPokedex extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Expanded(
-                      flex: 13,
+                      flex:
+                          Proportions.innerPokedexInsideContentWidthProportion,
                       child: InnerPokedex(),
                     ),
                     Expanded(
+                      flex: Proportions.outerPokedexRollerWidthProportion,
                       child: CustomPaint(
                         painter: LeftRollerPainter(
                           color: PokedexColors.outerPokedexColor,
