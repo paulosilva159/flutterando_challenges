@@ -9,50 +9,50 @@ import 'file:///D:/Projetos/Flutter/flutterando_challenges/flutterando_pokedex_c
 class OutsidePokedex extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Container(
-      color: Colors.white,
-      child: Column(
-        children: [
-          Expanded(
-            flex: Proportions.outerPokedexTopBarHeightProportion,
-            child: OutsideBackground(),
-          ),
-          Expanded(
-            flex: Proportions.innerPokedexInsideContentHeightProportion,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Expanded(
-                  flex: Proportions.outerPokedexRollerWidthProportion,
-                  child: CustomPaint(
-                    painter: RightRollerPainter(
-                      color: PokedexColors.outerPokedexColor,
-                      gapColor: PokedexColors.outerShadowPokedexColor,
+        color: Colors.white,
+        child: Column(
+          children: [
+            Expanded(
+              flex: Proportions.outerPokedexTopBarHeightProportion,
+              child: OutsideBackground(),
+            ),
+            Expanded(
+              flex: Proportions.innerPokedexInsideContentHeightProportion,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Expanded(
+                    flex: Proportions.outerPokedexRollerWidthProportion,
+                    child: CustomPaint(
+                      painter: RightRollerPainter(
+                        color: PokedexColors.outerPokedexColor,
+                        gapColor: PokedexColors.outerShadowPokedexColor,
+                      ),
                     ),
                   ),
-                ),
-                Expanded(
-                  flex: Proportions.innerPokedexInsideContentWidthProportion,
-                  child: InnerCover(
-                    tableButtonsCallnack: const [
-                      fakeCallback,
-                      fakeCallback,
-                      fakeCallback,
-                      fakeCallback,
-                      fakeCallback,
-                      fakeCallback,
-                      fakeCallback,
-                      fakeCallback,
-                      fakeCallback,
-                      fakeCallback,
-                    ],
+                  Expanded(
+                    flex: Proportions.innerPokedexInsideContentWidthProportion,
+                    child: InnerCover(
+                      tableButtonsCallnack: const [
+                        fakeCallback,
+                        fakeCallback,
+                        fakeCallback,
+                        fakeCallback,
+                        fakeCallback,
+                        fakeCallback,
+                        fakeCallback,
+                        fakeCallback,
+                        fakeCallback,
+                        fakeCallback,
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
-      ),
-    );
+          ],
+        ),
+      );
 }
 
 void fakeCallback() {}

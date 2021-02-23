@@ -13,17 +13,17 @@ class BottomDisplays extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        _BottomDisplay(
-          child: leftDisplayChild,
-        ),
-        _BottomDisplay(
-          child: rightDisplayChild,
-        ),
-      ],
-    );
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          _BottomDisplay(
+            child: leftDisplayChild,
+          ),
+          _BottomDisplay(
+            child: rightDisplayChild,
+          ),
+        ],
+      );
 }
 
 class _BottomDisplay extends StatelessWidget {
