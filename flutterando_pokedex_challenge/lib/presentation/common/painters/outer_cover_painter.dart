@@ -15,7 +15,6 @@ class OuterCoverPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    const gapHeight = 4.0;
     const coverGapWidth = 120.0;
     const coverGapHeight = 24.0;
 
@@ -32,8 +31,7 @@ class OuterCoverPainter extends CustomPainter {
         Proportions.outerPokedexTopBarHeightProportion /
         Proportions.innerPokedexInsideContentHeightProportion;
 
-    final topBarShadowHeight =
-        topBarHeight * Proportions.outerPokedexTopBarDepthHeightProportion;
+    final topBarShadowHeight = topBarHeight / 12;
 
     final coverStrokePaint = Paint()
       ..strokeWidth = 1
@@ -43,12 +41,11 @@ class OuterCoverPainter extends CustomPainter {
     final coverPaint = Paint()..color = color;
 
     final coverPath = Path()
-      ..moveTo(
-          _size.width * 0, size.height * 0 - topBarShadowHeight + gapHeight)
+      ..moveTo(_size.width * 0, size.height * 0 - topBarShadowHeight)
       ..relativeLineTo(_size.width * 2 / 5, 0)
       ..relativeLineTo(_size.width * 1 / 5, -topBarHeight * .5)
-      ..relativeLineTo(_size.width * 2 / 5 - rollerWidth * .75, 0)
-      ..lineTo(_size.width - rollerWidth * .75, size.height)
+      ..relativeLineTo(_size.width * 2 / 5 - rollerWidth * .5, 0)
+      ..lineTo(_size.width - rollerWidth * .5, size.height)
       ..lineTo(_size.width * 0, size.height * 1)
       ..close();
 

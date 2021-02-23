@@ -6,7 +6,6 @@ class Proportions {
   static const innerPokedexButtonsGroupHeightProportion = 2;
 
   static const outerPokedexTopBarHeightProportion = 3;
-  static const outerPokedexTopBarDepthHeightProportion = 1 / 12;
   static const innerPokedexInsideContentHeightProportion = 11;
 
   static const outerPokedexRollerWidthProportion = 1;

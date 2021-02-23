@@ -5,18 +5,21 @@ class InnerCoverPainter extends CustomPainter {
   InnerCoverPainter({
     @required this.color,
     @required this.gapColor,
+    @required this.innerColor,
   })  : assert(color != null),
-        assert(gapColor != null);
+        assert(gapColor != null),
+        assert(innerColor != null);
 
   final Color color;
   final Color gapColor;
+  final Color innerColor;
 
   @override
   void paint(Canvas canvas, Size size) {
     const insideGapHeight = 16.0;
 
     drawCover(canvas, size, color);
-    drawInnerCover(canvas, size, color, insideGapHeight);
+    drawInnerCover(canvas, size, innerColor, insideGapHeight);
     drawInnerCoverDepth(canvas, size, gapColor, insideGapHeight);
   }
 
@@ -46,12 +49,14 @@ void drawCover(Canvas canvas, Size size, Color color) {
   final coverPaint = Paint()..color = color;
 
   final coverPath = Path()
-    ..moveTo(_size.width * 0 - rollerWidth * .15,
-        size.height * 0 - topBarHeight * .5)
+    ..moveTo(
+      _size.width * 0 - rollerWidth * .15,
+      _size.height * 0 - topBarHeight * .5,
+    )
     ..relativeLineTo(_size.width * 2 / 5, 0)
     ..relativeLineTo(_size.width * 1 / 5, topBarHeight * .5)
     ..relativeLineTo(_size.width * 2 / 5, 0)
-    ..relativeLineTo(0, size.height * 1)
+    ..relativeLineTo(0, _size.height * 1)
     ..relativeLineTo(-_size.width * 1, 0)
     ..close();
 
@@ -85,7 +90,7 @@ void drawInnerCover(
   final innerPath = Path()
     ..moveTo(
       _size.width * 0 - rollerWidth * .15 + insideGapHeight,
-      size.height * 0 - topBarHeight * .5 + insideGapHeight,
+      _size.height * 0 - topBarHeight * .5 + insideGapHeight,
     )
     ..relativeLineTo(
       _size.width * 2 / 5 - insideGapHeight,
@@ -101,7 +106,7 @@ void drawInnerCover(
     )
     ..relativeLineTo(
       0,
-      size.height * 1 - insideGapHeight * 2,
+      _size.height * 1 - topBarHeight / 2,
     )
     ..relativeLineTo(
       -_size.width * 1 + rollerWidth * .25 + insideGapHeight * 3,
@@ -129,8 +134,7 @@ void drawInnerCoverDepth(
       Proportions.outerPokedexTopBarHeightProportion /
       Proportions.innerPokedexInsideContentHeightProportion;
 
-  final depthHeight =
-      topBarHeight * Proportions.outerPokedexTopBarDepthHeightProportion;
+  final depthHeight = topBarHeight / 12;
 
   final coverStrokePaint = Paint()
     ..strokeWidth = 1

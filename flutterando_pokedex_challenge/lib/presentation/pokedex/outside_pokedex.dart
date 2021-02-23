@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/outside_background.dart';
-import 'package:flutterando_pokedex_challenge/presentation/common/painters/inner_cover_painter.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/painters/right_roller_painter.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/utils/colors.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/utils/proportions.dart';
+
+import 'file:///D:/Projetos/Flutter/flutterando_challenges/flutterando_pokedex_challenge/lib/presentation/pokedex/inner_cover.dart';
 
 class OutsidePokedex extends StatelessWidget {
   @override
@@ -35,7 +36,18 @@ class OutsidePokedex extends StatelessWidget {
                 Expanded(
                   flex: Proportions.innerPokedexInsideContentWidthProportion,
                   child: InnerCover(
-                    size: _size,
+                    tableButtonsCallnack: const [
+                      fakeCallback,
+                      fakeCallback,
+                      fakeCallback,
+                      fakeCallback,
+                      fakeCallback,
+                      fakeCallback,
+                      fakeCallback,
+                      fakeCallback,
+                      fakeCallback,
+                      fakeCallback,
+                    ],
                   ),
                 ),
               ],
@@ -47,26 +59,4 @@ class OutsidePokedex extends StatelessWidget {
   }
 }
 
-class InnerCover extends StatelessWidget {
-  const InnerCover({@required this.size}) : assert(size != null);
-
-  final Size size;
-
-  @override
-  Widget build(BuildContext context) => Container(
-        height: size.height *
-            Proportions.innerPokedexInsideContentHeightProportion /
-            (Proportions.outerPokedexTopBarHeightProportion +
-                Proportions.innerPokedexInsideContentHeightProportion),
-        width: size.width *
-            Proportions.innerPokedexInsideContentWidthProportion /
-            (Proportions.innerPokedexInsideContentWidthProportion +
-                Proportions.outerPokedexRollerWidthProportion),
-        child: CustomPaint(
-          painter: InnerCoverPainter(
-            color: PokedexColors.outerPokedexColor,
-            gapColor: PokedexColors.outerShadowPokedexColor,
-          ),
-        ),
-      );
-}
+void fakeCallback() {}

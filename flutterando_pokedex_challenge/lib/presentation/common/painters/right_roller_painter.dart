@@ -19,8 +19,7 @@ class RightRollerPainter extends CustomPainter {
         Proportions.outerPokedexTopBarHeightProportion /
         Proportions.innerPokedexInsideContentHeightProportion;
 
-    final topBarDepthHeight =
-        topBarHeight * Proportions.outerPokedexTopBarDepthHeightProportion;
+    final topBarDepthHeight = topBarHeight / 12;
 
     Rect arcRect({
       double gapHeightOffset = 0,
