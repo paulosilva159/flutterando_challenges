@@ -12,10 +12,7 @@ class BottomDisplays extends StatelessWidget {
   final Widget rightDisplayChild;
 
   @override
-  Widget build(BuildContext context) {
-    final _size = MediaQuery.of(context).size;
-
-    return Row(
+  Widget build(BuildContext context) => Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -27,7 +24,6 @@ class BottomDisplays extends StatelessWidget {
         ),
       ],
     );
-  }
 }
 
 class _BottomDisplay extends StatelessWidget {

@@ -8,10 +8,7 @@ import 'file:///D:/Projetos/Flutter/flutterando_challenges/flutterando_pokedex_c
 
 class OutsidePokedex extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    final _size = MediaQuery.of(context).size;
-
-    return Container(
+  Widget build(BuildContext context) => Container(
       color: Colors.white,
       child: Column(
         children: [
@@ -56,7 +53,6 @@ class OutsidePokedex extends StatelessWidget {
         ],
       ),
     );
-  }
 }
 
 void fakeCallback() {}
