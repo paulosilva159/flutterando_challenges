@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutterando_pokedex_challenge/presentation/pokedex/pokedex.dart';
+import 'package:flutterando_pokedex_challenge/presentation/pokedex/pokedex_view.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,6 +16,6 @@ class PokedexApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Pokedex(),
+        home: PokedexView(),
       );
 }

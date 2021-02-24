@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/main_pokedex_structure/buttons_group.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/main_pokedex_structure/screen.dart';
-import 'package:flutterando_pokedex_challenge/presentation/common/painters/pikachu_painter.dart';
+import 'package:flutterando_pokedex_challenge/presentation/common/pikachu.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/utils/proportions.dart';
 
-class MainPokedex extends StatelessWidget {
+class MainPokedexView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
@@ -30,11 +30,4 @@ class MainPokedex extends StatelessWidget {
       ],
     );
   }
-}
-
-class Pikachu extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) => CustomPaint(
-        painter: PikachuPainter(),
-      );
 }

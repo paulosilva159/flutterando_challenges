@@ -5,10 +5,14 @@ import 'package:flutterando_pokedex_challenge/presentation/common/utils/colors.d
 import 'package:flutterando_pokedex_challenge/presentation/common/utils/proportions.dart';
 
 class InnerCoverPokedexStructure extends StatelessWidget {
-  const InnerCoverPokedexStructure({@required this.innerCoverPokedex})
-      : assert(innerCoverPokedex != null);
+  const InnerCoverPokedexStructure({
+    @required this.innerCoverPokedex,
+    @required this.isCoverOpen,
+  })  : assert(innerCoverPokedex != null),
+        assert(isCoverOpen != null);
 
   final Widget innerCoverPokedex;
+  final bool isCoverOpen;
 
   @override
   Widget build(BuildContext context) => Container(
@@ -35,7 +39,8 @@ class InnerCoverPokedexStructure extends StatelessWidget {
                   ),
                   Expanded(
                     flex: Proportions.innerPokedexInsideContentWidthProportion,
-                    child: innerCoverPokedex,
+                    child:
+                        isCoverOpen ? innerCoverPokedex : OutsideBackground(),
                   ),
                 ],
               ),
