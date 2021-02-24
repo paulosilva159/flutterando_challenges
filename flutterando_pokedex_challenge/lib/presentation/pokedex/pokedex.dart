@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/utils/colors.dart';
-import 'package:flutterando_pokedex_challenge/presentation/pokedex/outer_pokedex.dart';
-import 'package:flutterando_pokedex_challenge/presentation/pokedex/outside_pokedex.dart';
+import 'package:flutterando_pokedex_challenge/presentation/pokedex/inner_cover_pokedex.dart';
+import 'package:flutterando_pokedex_challenge/presentation/pokedex/main_pokedex.dart';
+
+import 'file:///D:/Projetos/Flutter/flutterando_challenges/flutterando_pokedex_challenge/lib/presentation/common/inner_cover_pokedex_structure.dart';
+import 'file:///D:/Projetos/Flutter/flutterando_challenges/flutterando_pokedex_challenge/lib/presentation/common/pokedex_structure.dart';
 
 class Pokedex extends StatefulWidget {
   @override
@@ -29,11 +32,14 @@ class _PokedexState extends State<Pokedex> with SingleTickerProviderStateMixin {
         body: PageView(
           controller: _pageController,
           children: [
-            OuterPokedex(
+            PokedexStructure(
               coverController: _coverController,
               onCoverButtonPress: _coverController.forward,
+              mainPokedex: MainPokedex(),
             ),
-            OutsidePokedex(),
+            InnerCoverPokedexStructure(
+              innerCoverPokedex: InnerCoverPokedex(),
+            ),
           ],
         ),
       );

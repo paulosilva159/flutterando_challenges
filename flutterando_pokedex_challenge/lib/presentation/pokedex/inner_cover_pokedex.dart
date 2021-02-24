@@ -1,19 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutterando_pokedex_challenge/presentation/common/inner_cover/bottom_displays.dart';
-import 'package:flutterando_pokedex_challenge/presentation/common/inner_cover/buttons_table.dart';
-import 'package:flutterando_pokedex_challenge/presentation/common/inner_cover/other_buttons.dart';
-import 'package:flutterando_pokedex_challenge/presentation/common/inner_cover/short_info_display.dart';
+import 'package:flutterando_pokedex_challenge/presentation/common/inner_cover_structure/bottom_displays.dart';
+import 'package:flutterando_pokedex_challenge/presentation/common/inner_cover_structure/buttons_table.dart';
+import 'package:flutterando_pokedex_challenge/presentation/common/inner_cover_structure/other_buttons.dart';
+import 'package:flutterando_pokedex_challenge/presentation/common/inner_cover_structure/short_info_display.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/painters/inner_cover_painter.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/utils/colors.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/utils/proportions.dart';
 
-class InnerCover extends StatelessWidget {
-  const InnerCover({@required this.tableButtonsCallnack})
-      : assert(
-            tableButtonsCallnack != null && tableButtonsCallnack.length == 10);
-
-  final List<VoidCallback> tableButtonsCallnack;
-
+class InnerCoverPokedex extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
@@ -48,7 +42,8 @@ class InnerCover extends StatelessWidget {
               ),
               Expanded(
                 child: ButtonsTable(
-                  buttonsCallback: tableButtonsCallnack,
+                  buttonsCallback:
+                      List<VoidCallback>.generate(10, (index) => () {}),
                 ),
               ),
               const SizedBox(

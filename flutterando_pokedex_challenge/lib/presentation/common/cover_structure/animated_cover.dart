@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutterando_pokedex_challenge/presentation/common/outer_pokedex/outer_cover.dart';
+import 'package:flutterando_pokedex_challenge/presentation/common/cover_structure/outer_cover.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/utils/proportions.dart';
 
 class AnimatedCover extends AnimatedWidget {

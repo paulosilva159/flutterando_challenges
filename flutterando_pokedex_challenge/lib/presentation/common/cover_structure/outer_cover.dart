@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterando_pokedex_challenge/presentation/common/outer_pokedex/cover_button.dart';
+import 'package:flutterando_pokedex_challenge/presentation/common/cover_structure/cover_button.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/painters/outer_cover_painter.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/utils/colors.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/utils/proportions.dart';

@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutterando_pokedex_challenge/presentation/common/outer_pokedex/animated_cover.dart';
+import 'package:flutterando_pokedex_challenge/presentation/common/cover_structure/animated_cover.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/painters/glass_crystal_painter.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/painters/left_roller_painter.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/painters/top_bar_painter.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/utils/colors.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/utils/proportions.dart';
-import 'package:flutterando_pokedex_challenge/presentation/pokedex/inner_pokedex.dart';
 
-class OuterPokedex extends StatelessWidget {
-  const OuterPokedex({
+class PokedexStructure extends StatelessWidget {
+  const PokedexStructure({
     @required this.coverController,
     @required this.onCoverButtonPress,
+    @required this.mainPokedex,
   })  : assert(coverController != null),
-        assert(onCoverButtonPress != null);
+        assert(onCoverButtonPress != null),
+        assert(mainPokedex != null);
 
   final AnimationController coverController;
   final VoidCallback onCoverButtonPress;
+  final Widget mainPokedex;
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +118,7 @@ class OuterPokedex extends StatelessWidget {
                     Expanded(
                       flex:
                           Proportions.innerPokedexInsideContentWidthProportion,
-                      child: InnerPokedex(),
+                      child: mainPokedex,
                     ),
                     Expanded(
                       flex: Proportions.outerPokedexRollerWidthProportion,

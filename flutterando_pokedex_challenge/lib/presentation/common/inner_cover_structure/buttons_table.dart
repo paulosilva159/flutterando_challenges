@@ -57,7 +57,6 @@ class ButtonsTable extends StatelessWidget {
 
 class _TableButton extends StatelessWidget {
   const _TableButton({@required this.onTap}) : assert(onTap != null);
-
   final VoidCallback onTap;
 
   @override

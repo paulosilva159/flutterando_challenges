@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterando_pokedex_challenge/presentation/common/inner_cover/short_info_display.dart';
+import 'package:flutterando_pokedex_challenge/presentation/common/inner_cover_structure/short_info_display.dart';
 
 class BottomDisplays extends StatelessWidget {
   const BottomDisplays({

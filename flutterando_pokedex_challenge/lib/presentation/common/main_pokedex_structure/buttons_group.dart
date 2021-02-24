@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterando_pokedex_challenge/presentation/common/inner_pokedex/big_rounded_button.dart';
-import 'package:flutterando_pokedex_challenge/presentation/common/inner_pokedex/directional_buttons_group.dart';
+import 'package:flutterando_pokedex_challenge/presentation/common/main_pokedex_structure/big_rounded_button.dart';
+import 'package:flutterando_pokedex_challenge/presentation/common/main_pokedex_structure/directional_buttons_group.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/painters/colored_button_painter.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/utils/colors.dart';
 

@@ -3,9 +3,13 @@ import 'package:flutterando_pokedex_challenge/presentation/common/outside_backgr
 import 'package:flutterando_pokedex_challenge/presentation/common/painters/right_roller_painter.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/utils/colors.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/utils/proportions.dart';
-import 'package:flutterando_pokedex_challenge/presentation/pokedex/inner_cover.dart';
 
-class OutsidePokedex extends StatelessWidget {
+class InnerCoverPokedexStructure extends StatelessWidget {
+  const InnerCoverPokedexStructure({@required this.innerCoverPokedex})
+      : assert(innerCoverPokedex != null);
+
+  final Widget innerCoverPokedex;
+
   @override
   Widget build(BuildContext context) => Container(
         color: Colors.white,
@@ -31,20 +35,7 @@ class OutsidePokedex extends StatelessWidget {
                   ),
                   Expanded(
                     flex: Proportions.innerPokedexInsideContentWidthProportion,
-                    child: InnerCover(
-                      tableButtonsCallnack: const [
-                        fakeCallback,
-                        fakeCallback,
-                        fakeCallback,
-                        fakeCallback,
-                        fakeCallback,
-                        fakeCallback,
-                        fakeCallback,
-                        fakeCallback,
-                        fakeCallback,
-                        fakeCallback,
-                      ],
-                    ),
+                    child: innerCoverPokedex,
                   ),
                 ],
               ),
@@ -53,5 +44,3 @@ class OutsidePokedex extends StatelessWidget {
         ),
       );
 }
-
-void fakeCallback() {}

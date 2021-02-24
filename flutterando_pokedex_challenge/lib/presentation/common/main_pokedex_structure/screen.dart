@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterando_pokedex_challenge/presentation/common/inner_pokedex/screen_button.dart';
-import 'package:flutterando_pokedex_challenge/presentation/common/inner_pokedex/screen_sound_button.dart';
+import 'package:flutterando_pokedex_challenge/presentation/common/main_pokedex_structure/screen_button.dart';
+import 'package:flutterando_pokedex_challenge/presentation/common/main_pokedex_structure/screen_sound_button.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/painters/screen_border_painter.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/utils/colors.dart';
 import 'package:flutterando_pokedex_challenge/presentation/common/utils/proportions.dart';
