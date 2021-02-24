@@ -10,7 +10,8 @@ class PokedexView extends StatefulWidget {
   _PokedexViewState createState() => _PokedexViewState();
 }
 
-class _PokedexViewState extends State<PokedexView> with SingleTickerProviderStateMixin {
+class _PokedexViewState extends State<PokedexView>
+    with SingleTickerProviderStateMixin {
   final _pageController = PageController(initialPage: 0);
 
   AnimationController _coverController;
